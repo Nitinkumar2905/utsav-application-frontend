@@ -1,4 +1,13 @@
+import Home from "./Components/Home";
 import Navbar from "./Components/Navbar";
+import Product from './Components/Product';
+import Features from './Components/Features';
+import Services from './Components/Services';
+import About from './Components/About';
+import Contact from './Components/Contact';
+import SignIn from './Components/Authentication/Login';
+import SignUp from './Components/Authentication/SignUp';
+// import UserDetails from './Components/Authentication/UserDetails';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 function App() {
   return (
@@ -6,7 +15,15 @@ function App() {
       <Router>
       <Navbar/>
         <Routes>
-          <Route element={""}/>
+          <Route exact index element={<Home/>}/>
+          <Route exact path="/" element={<Home/>}/>
+          <Route exact path="/products" element={<Product/>}/>
+          <Route exact path="/services" element={<Features/>}/>
+          <Route exact path="/features" element={<Services/>}/>
+          <Route exact path="/about" element={<About/>}/>
+          <Route exact path="/contact" element={<Contact/>}/>
+          <Route exact path="/signUp" element={<SignIn/>}/>
+          <Route exact path="/contact" element={<SignUp/>}/>
         </Routes>
       </Router>
     </>
