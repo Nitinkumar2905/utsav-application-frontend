@@ -9,22 +9,24 @@ import SignIn from './Components/Authentication/Login';
 import SignUp from './Components/Authentication/SignUp';
 // import UserDetails from './Components/Authentication/UserDetails';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Footer from "./Components/Footer";
 function App() {
   return (
     <>
       <Router>
-      <Navbar/>
+        <Navbar />
         <Routes>
-          <Route exact index element={<Home/>}/>
-          <Route exact path="/" element={<Home/>}/>
-          <Route exact path="/products" element={<Product/>}/>
-          <Route exact path="/services" element={<Features/>}/>
-          <Route exact path="/features" element={<Services/>}/>
-          <Route exact path="/about" element={<About/>}/>
-          <Route exact path="/contact" element={<Contact/>}/>
-          <Route exact path="/signUp" element={<SignIn/>}/>
-          <Route exact path="/contact" element={<SignUp/>}/>
+          <Route exact index element={<Home />} />
+          <Route exact path="/" element={<Home />} />
+          <Route exact path="/products" element={<Product />} />
+          <Route exact path="/services" element={<Features />} />
+          <Route exact path="/features" element={<Services />} />
+          {/* <Route exact path="/about" element={<About />} /> */}
+          <Route exact path="/contact" element={<Contact />} />
+          <Route exact path="/signUp" element={<SignIn />} />
+          <Route exact path="/contact" element={<SignUp />} />
         </Routes>
+        <Footer />
       </Router>
     </>
   );
