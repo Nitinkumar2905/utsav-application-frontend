@@ -5,6 +5,7 @@ import ham from "./images/hamburger.png";
 import Login from "./Authentication/Login";
 import "./styles/Navbar.css"
 import close from '../Components/images/close.png'
+import SignUp from "./Authentication/SignUp";
 
 const Navbar = () => {
   const location = useLocation();
@@ -17,7 +18,7 @@ const Navbar = () => {
   const openModal = (modalType) => {
     if (modalType === "login") {
       setShowLoginModal(true);
-    } else if (modalType === "signup") {
+    } else if (modalType === "signUp") {
       setShowSignUpModal(true);
     }
   };
@@ -132,7 +133,7 @@ const Navbar = () => {
               {/* <Link to="/signIn">SignIn</Link> */}
               SignIn
             </button>
-            <button onClick={() => openModal('signUP')}
+            <button onClick={() => openModal('signUp')}
               style={{ fontFamily: "sans-serif" }}
               className="bg-red-700 shadow-sm shadow-red-900 hover:bg-transparent hover:text-red-600 duration-300 ease-in-out font-medium text-white mx-2 px-4 py-2 rounded-md"
             >
@@ -149,9 +150,16 @@ const Navbar = () => {
           {/* login modal */}
           {showLoginModal && (
             <div className="modal">
-              {/* Add your login form here */}
               <button className="absolute top-2 right-2" onClick={() => closeModal('login')}> <img className="h-8 w-8" src={close} alt="" /> </button>
               <Login/>
+            </div>
+          )}
+
+          {/* signUp modal */}
+          {showSignUpModal && (
+            <div className="modal">
+              <button className="absolute top-2 right-2" onClick={() => closeModal('login')}> <img className="h-8 w-8" src={close} alt="" /> </button>
+              <SignUp/>
             </div>
           )}
         </div>

@@ -21,10 +21,10 @@ function App() {
           <Route exact path="/products" element={<Product />} />
           <Route exact path="/services" element={<Features />} />
           <Route exact path="/features" element={<Services />} />
-          {/* <Route exact path="/about" element={<About />} /> */}
+          <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
-          <Route exact path="/signUp" element={<SignIn />} />
-          <Route exact path="/contact" element={<SignUp />} />
+          {/* <Route exact path="/signIn" element={<SignIn />} /> */}
+          {/* <Route exact path="/signUp" element={<SignUp />} /> */}
         </Routes>
         <Footer />
       </Router>
