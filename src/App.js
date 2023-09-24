@@ -19,8 +19,8 @@ function App() {
           <Route exact index element={<Home />} />
           <Route exact path="/" element={<Home />} />
           <Route exact path="/products" element={<Product />} />
-          <Route exact path="/services" element={<Features />} />
-          <Route exact path="/features" element={<Services />} />
+          <Route exact path="/services" element={<Services />} />
+          <Route exact path="/features" element={<Features />} />
           <Route exact path="/about" element={<About />} />
           <Route exact path="/contact" element={<Contact />} />
           {/* <Route exact path="/signIn" element={<SignIn />} /> */}

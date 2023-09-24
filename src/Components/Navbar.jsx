@@ -3,15 +3,15 @@ import { Link, useLocation } from "react-router-dom";
 import logo from "./images/pro.png";
 import ham from "./images/hamburger.png";
 import Login from "./Authentication/Login";
-import "./styles/Navbar.css"
-import close from '../Components/images/close.png'
+import "./styles/Navbar.css";
+import close from "../Components/images/close.png";
 import SignUp from "./Authentication/SignUp";
 
 const Navbar = () => {
   const location = useLocation();
-
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showSignUpModal, setShowSignUpModal] = useState(false);
+  const [scrolling,setScrolling]=useState(false)
   const modalRef = useRef();
 
   // Function to open a modal
@@ -47,9 +47,27 @@ const Navbar = () => {
       window.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showLoginModal, showSignUpModal]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setScrolling(true);
+      } else {
+        setScrolling(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
+
+  const textColorClass = scrolling?"text-white":"text-black"
   return (
     <>
-      <nav className="opacity-95 z-10 sticky top-0 bg-gradient-to-tl from-blue-100 to-red-100 h-24 w-full">
+      <nav className={`opacity-95 z-10 sticky top-0 navbar ${scrolling?"scrolling":""} h-24 w-full`}>
         <div className="relative flex justify-between w-[95%] mx-auto items-center h-full">
           {/* logo */}
           <div className="mx-2 flex justify-between w-[100%] lg:w-fit">
@@ -71,13 +89,14 @@ const Navbar = () => {
           <div className="hidden h-10 lg:flex items-end space-x-6 w-[100%] md:w-fit">
             <Link
               style={{ fontFamily: "sans-serif" }}
-              className={`font-medium text-xl hover:text-red-600 ${location.pathname === "/" ? "text-red-600" : "text-black"
-                }`}
+              className={`font-medium text-xl hover:text-red-600 ${
+                location.pathname === "/" ? "text-red-600" : textColorClass
+              }`}
               to="/"
             >
               Home
             </Link>
-            <Link
+            {/* <Link
               style={{ fontFamily: "sans-serif" }}
               className={`font-medium text-xl hover:text-red-600 ${location.pathname === "/products"
                 ? "text-red-600"
@@ -86,39 +105,43 @@ const Navbar = () => {
               to="/products"
             >
               Product
-            </Link>
+            </Link> */}
             <Link
               style={{ fontFamily: "sans-serif" }}
-              className={`font-medium text-xl hover:text-red-600 ${location.pathname === "/services"
-                ? "text-red-600"
-                : "text-black"
-                }`}
+              className={`font-medium text-xl hover:text-red-600 ${
+                location.pathname === "/services"
+                  ? "text-red-600"
+                  : textColorClass
+              }`}
               to="/services"
             >
               Services
             </Link>
             <Link
               style={{ fontFamily: "sans-serif" }}
-              className={`font-medium text-xl hover:text-red-600 ${location.pathname === "/features"
-                ? "text-red-600"
-                : "text-black"
-                }`}
+              className={`font-medium text-xl hover:text-red-600 ${
+                location.pathname === "/features"
+                  ? "text-red-600"
+                  : textColorClass
+              }`}
               to="/features"
             >
               Features
             </Link>
             <Link
               style={{ fontFamily: "sans-serif" }}
-              className={`font-medium text-xl hover:text-red-600 ${location.pathname === "/about" ? "text-red-600" : "text-black"
-                }`}
+              className={`font-medium text-xl hover:text-red-600 ${
+                location.pathname === "/about" ? "text-red-600" : textColorClass
+              }`}
               to="/about"
             >
               About Us
             </Link>
             <Link
               style={{ fontFamily: "sans-serif" }}
-              className={`font-medium text-xl hover:text-red-600 ${location.pathname === "/contact" ? "text-red-600" : "text-black"
-                }`}
+              className={`font-medium text-xl hover:text-red-600 ${
+                location.pathname === "/contact" ? "text-red-600" : textColorClass
+              }`}
               to="/contact"
             >
               Contact Us
@@ -126,14 +149,16 @@ const Navbar = () => {
           </div>
           {/* buttons */}
           <div className="hidden lg:flex">
-            <button onClick={() => openModal('login')}
+            <button
+              onClick={() => openModal("login")}
               style={{ fontFamily: "sans-serif" }}
               className="bg-red-700 shadow-sm shadow-red-900 hover:bg-transparent hover:text-red-600 duration-300 ease-in-out font-medium text-white mx-2 px-4 py-2 rounded-md"
             >
               {/* <Link to="/signIn">SignIn</Link> */}
               SignIn
             </button>
-            <button onClick={() => openModal('signUp')}
+            <button
+              onClick={() => openModal("signUp")}
               style={{ fontFamily: "sans-serif" }}
               className="bg-red-700 shadow-sm shadow-red-900 hover:bg-transparent hover:text-red-600 duration-300 ease-in-out font-medium text-white mx-2 px-4 py-2 rounded-md"
             >
@@ -144,22 +169,34 @@ const Navbar = () => {
 
           {/* Background Overlay */}
           {(showLoginModal || showSignUpModal) && (
-            <div className="overlay" onClick={() => closeModal('all')}></div>
+            <div className="overlay" onClick={() => closeModal("all")}></div>
           )}
 
           {/* login modal */}
           {showLoginModal && (
             <div className="modal">
-              <button className="absolute top-2 right-2" onClick={() => closeModal('login')}> <img className="h-8 w-8" src={close} alt="" /> </button>
-              <Login/>
+              <button
+                className="absolute top-2 right-2"
+                onClick={() => closeModal("login")}
+              >
+                {" "}
+                <img className="h-8 w-8" src={close} alt="" />{" "}
+              </button>
+              <Login />
             </div>
           )}
 
           {/* signUp modal */}
           {showSignUpModal && (
             <div className="modal">
-              <button className="absolute top-2 right-2" onClick={() => closeModal('login')}> <img className="h-8 w-8" src={close} alt="" /> </button>
-              <SignUp/>
+              <button
+                className="absolute top-2 right-2"
+                onClick={() => closeModal("login")}
+              >
+                {" "}
+                <img className="h-8 w-8" src={close} alt="" />{" "}
+              </button>
+              <SignUp />
             </div>
           )}
         </div>

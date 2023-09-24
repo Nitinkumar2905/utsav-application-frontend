@@ -32,3 +32,15 @@
   background: rgba(0, 0, 0, 0.5);
   z-index: 999;
 }
+
+.navbar {
+  height: 12vh; /* Set the height of your navbar */
+  background:linear-gradient(to right bottom, #fee2e2, #dbeafe) ;
+  transition: background-color 0.3s ease-in-out;
+  z-index: 1000;
+}
+
+.navbar.scrolling {
+  background: rgb(15 23 42); /* Change this to your desired background color */
+  /* Add any other styles you want for the scrolling navbar */
+}

@@ -13,7 +13,7 @@ const SignUp = () => {
           <form className='h-fit  flex w-[100%] flex-col'>
             <div className='flex  w-[100%] space-x-5 mb-3 border-2 py-2 border-b-black'>
               <img className='w-6 h-6' src={user} alt="" />
-              <input className='w-full placeholder:text-xl outline-none bg-inherit border-0' id='email' type="text" placeholder='Name' />
+              <input className='w-full placeholder:text-xl outline-none bg-inherit border-0' id='name' type="text" placeholder='Name' />
             </div>
             <div className='flex  w-[100%] space-x-5 mb-3 border-2 py-2 border-b-black'>
               <img className='w-6 h-6' src={email} alt="" />
