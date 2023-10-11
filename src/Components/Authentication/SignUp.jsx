@@ -24,7 +24,7 @@ const SignUp = () => {
               <input className='w-full placeholder:text-xl outline-none bg-inherit border-0' id='password' type="password" placeholder='Password' />
             </div>
 
-            <button className='text-white bg-red-600 mt-6 rounded-md py-2 px-6'>Sign In</button>
+            <button className='text-white bg-red-600 mt-6 rounded-md py-2 px-6'>Sign Up</button>
           </form>
 
           <span className='w-full text-center font-medium text-xl cursor-pointer hover:text-red-700'>Forgot Password?</span>
